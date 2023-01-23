@@ -1,0 +1,22 @@
+@use "../shared/vars";
+@use "../shared/utils";
+
+#container-main {
+    width: fit-content;
+    
+    margin: 0 2rem;
+    padding: 2rem 0;
+    display: grid;
+    grid-gap: 2rem;
+    
+    // Responsiveness - Grid Spacing
+    @include utils.on-breakpoint(vars.$break-small) {
+        grid-template-columns: 1fr;
+    }
+    @include utils.on-breakpoint(vars.$break-medium) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @include utils.on-breakpoint(&) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

@@ -1,0 +1,62 @@
+@use "../shared/vars";
+@use "../shared/utils";
+
+#container-cart {
+    width: 3rem;
+    height: 3rem;
+
+    @include utils.on-breakpoint(&) {
+        width: 4rem;
+        height: 4rem;
+        font-size: 2.5rem;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+
+    border-radius: 100%;
+
+    font-size: 2rem;
+    text-align: center;
+    background-color: vars.$color-secondary;
+    
+    @include utils.text-bold;
+    @include utils.not-draggable;
+
+    z-index: vars.$layer-button-floating;
+
+    &:hover {
+        background-color: darken(vars.$color-secondary, 10%);
+    }
+
+    * { 
+        color: white;
+    }
+
+    a { 
+        text-decoration: none;
+
+        display: inherit;
+    }
+}
+
+#counter-cart {
+    width: 3rem;
+    height: 3rem;
+
+    position: absolute;
+    top: -3.3rem;
+
+    font-size: 2rem;
+    text-align: center;
+    line-height: 110%;
+
+    background: url("../../images/back_counter.png") no-repeat;
+    background-size: contain;
+    background-position: center;
+}

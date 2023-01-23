@@ -1,0 +1,32 @@
+@use "../shared/utils";
+
+#container-search {
+    padding: 0 .5rem;
+    display: flex;
+    align-content: center;
+
+    border-radius: .5rem;
+    background-color: white;
+
+    #icon-search {
+        height: 1.8rem;
+
+        margin: auto 0;
+    }
+
+    @include utils.button-behaviour;
+}
+
+#input-search {
+    flex: content;
+
+    border: none;
+    outline: none;
+
+    background-color: transparent;
+
+    &:disabled {
+        
+        @include utils.button-behaviour;
+    }
+}

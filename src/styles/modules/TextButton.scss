@@ -1,0 +1,18 @@
+@use "../shared/vars";
+@use "../shared/utils";
+
+.container-text-button {
+    width: fit-content;
+
+    padding: .5rem .7rem;
+    border-radius: .5rem;
+
+    color: white;
+    background-color: vars.$color-secondary;
+
+    &:hover {
+        background-color: darken(vars.$color-secondary, 10%);
+    }
+
+    @include utils.button-behaviour;
+}

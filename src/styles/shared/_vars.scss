@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,600;1,700&family=Quicksand:wght@500;600;700&display=swap');
+
+// Fonts
+$font-heading: 'Poppins', sans-serif;
+$font-main: 'Quicksand', sans-serif;
+
+// Colors
+$color-background: #E3E4E7;
+
+$color-primary: #44507D;
+$color-secondary: #F88379;
+
+$color-accent: #B70A0A;
+
+// Layers
+$layer-main: 1;
+$layer-button: 2;
+$layer-overlay: 3;
+$layer-panel: 4;
+$layer-button-floating: 5;
+
+// Breaks
+$break-small: 750px;
+$break-medium: 900px;

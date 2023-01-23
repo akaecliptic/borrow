@@ -1,0 +1,24 @@
+@use "../shared/vars";
+@use "../shared/utils";
+
+footer { 
+    width: 100%;
+    height: 150px;
+
+    color: white;
+    background-color: vars.$color-primary;
+
+    z-index: vars.$layer-panel;
+
+    p {
+        &::selection {
+            color: black;
+            background-color: vars.$color-secondary;
+        }
+    }
+}
+
+#logo-header {
+    height: 1em;
+    @include utils.button-behaviour;
+}

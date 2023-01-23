@@ -1,0 +1,93 @@
+@use "vars";
+
+// Text
+@mixin text-heading {
+    font-family: vars.$font-heading;
+    font-weight: 600;
+}
+
+@mixin text-main {
+    font-family: vars.$font-main;
+    font-weight: 500;
+}
+
+@mixin text-tag {
+    font-family: vars.$font-main;
+    font-weight: 600;
+}
+
+@mixin text-bold {
+    font-family: vars.$font-main;
+    font-weight: 700;
+}
+
+@mixin text-main-highlight {
+    ::selection {
+        color: white;
+        background-color: vars.$color-primary;
+    }
+}
+
+// Buttons
+@mixin not-draggable {
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+}
+
+@mixin button-behaviour {
+    cursor: pointer;
+    outline: none;
+
+    @include not-draggable;
+
+    z-index: vars.$layer-button;
+}
+
+@mixin button-behaviour-floating {
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+
+    @include not-draggable;
+
+    z-index: vars.$layer-button-floating;
+}
+
+// Responsive
+@mixin on-breakpoint($breakpoint) {
+
+    @if $breakpoint == vars.$break-small {
+        @media only screen and (max-width: vars.$break-small) {
+            @content;
+        }
+    }
+    @else if $breakpoint == vars.$break-medium {
+        @media only screen and (min-width: vars.$break-small) and (max-width: vars.$break-medium) {
+            @content;
+        }
+    }
+    @else if $breakpoint == & {
+        @media only screen and (min-width: vars.$break-medium) {
+            @content;
+        }
+    }
+}
+
+// Card 
+@mixin card {
+    width: 250px;
+    height: 375px;
+
+    // Responsiveness - Card Sizes
+    @include on-breakpoint(&) {
+        width: 300px;
+        height: 450px;
+    }
+
+    margin: auto;
+    display: flex;
+    overflow: hidden;
+    
+    border-radius: 1em;
+}

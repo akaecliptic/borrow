@@ -1,0 +1,22 @@
+@use "../shared/vars";
+@use "../shared/utils";
+
+.container-tag {
+    width: 3rem;
+    height: 3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    transform: translate(50%, -50%);
+
+    border-radius: 100%;
+
+    color: white;
+    font-size: 2rem;
+    background-color: vars.$color-secondary;
+
+    z-index: vars.$layer-overlay;
+}

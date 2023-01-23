@@ -1,0 +1,46 @@
+@use "../shared/vars";
+@use "../shared/utils";
+
+@mixin info {
+    @include utils.card;
+
+    padding: 0;
+    position: absolute;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-self: flex-end;
+
+    background-color: white;
+}
+
+.container-info {
+    @include info;
+
+    height: 0px;
+
+    > * {
+        display: none;
+    }
+
+    &.open-info {
+        padding: 1rem;
+        height: inherit;
+
+        > * {
+            display: initial;
+        }
+    }
+}
+
+.container-info-small {
+    @include info;
+
+    height: 150px;
+
+    padding: .5rem;
+    border-radius: 0 0 1rem 1rem;
+
+    > p, > span {
+        font-size: .8rem;
+    }
+}

@@ -1,0 +1,46 @@
+@use "../shared/vars";
+@use "../shared/utils";
+
+.container-checkout-book {
+    display: flex;
+}
+
+.container-checkout-book > .cancel {
+    width: 2rem;
+    height: 2rem;
+    
+    position: absolute;
+    align-self: center;
+    transform: translateX(-150%);
+
+    color: white;
+
+    @include utils.button-behaviour;
+}
+
+.container-checkout-book > .content {
+    width: 150px;
+
+    padding: 0 .5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border-radius: .5rem 0 0 .5rem;
+    
+    color: black;
+    background-color: white;
+
+    @include utils.on-breakpoint(vars.$break-small) { 
+        > span {
+            font-size: .7rem;
+        }
+    }
+}
+
+.container-checkout-book > .mark {
+    height: 100%;
+
+    @include utils.not-draggable;
+}
