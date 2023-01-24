@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { VoidConsumer } from "types/functions";
 import useCartStore from "hooks/useCartStore";
 import "styles/components/Card.scss";
@@ -15,6 +15,7 @@ const Card: FC<PropCard> = ({ book }) => {
 
     const [ selected, setSelected ] = useState<boolean>(false);
     const [ showInfo, setShowInfo ] = useState<boolean>(false);
+    const [ coverImage, setCoverImage ] = useState<string>('images/cover_default.jpg');
     const { width: screenWidth } = useScreenSize();
     const [ addBook, removeBook ] = useCartStore( state => [ state.addBook, state.removeBook ] );
 
@@ -43,6 +44,11 @@ const Card: FC<PropCard> = ({ book }) => {
         setSelected(addBook(book.id));
     };
 
+    useEffect(() => {
+        const url: string = coverURL({ value: book.id, key: 'olid', size: 'L', info: false});
+        setCoverImage(url);
+    }, [ book.id ]);
+
     return (
         <div className='container-card' onClick={click}
             onMouseOver={ () => setShowInfo(true) } onMouseOut={ () => setShowInfo(false) }
@@ -50,7 +56,7 @@ const Card: FC<PropCard> = ({ book }) => {
             { selected && renderTag() }
             <img 
                 className='cover'
-                src={`${coverURL({ value: book.id, key: 'olid', size: 'L', info: false})}`}
+                src={coverImage}
                 alt={`Cover of book ${book.title}`}
             />
             <div className={ getClassName() }>
