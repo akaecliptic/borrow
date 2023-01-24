@@ -1,5 +1,5 @@
 import { FC } from "react";
-import "styles/modules/Side.scss";
+import "styles/components/Side.scss";
 import { VoidConsumer } from "types/functions";
 
 const Side: FC<{}> = () => {

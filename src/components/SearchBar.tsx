@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FiSearch } from "react-icons/fi";
 import { OnChangeListener, VoidConsumer } from "types/functions";
-import "styles/modules/SearchBar.scss";
+import "styles/components/SearchBar.scss";
 
 const SearchBar: FC<{}> = () => {
 

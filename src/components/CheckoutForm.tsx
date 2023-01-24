@@ -2,7 +2,7 @@ import { FC } from "react";
 import dayjs from "dayjs";
 import TextButton from "components/TextButton";
 import CheckoutBook from "components/CheckoutBook";
-import "styles/modules/CheckoutForm.scss";
+import "styles/components/CheckoutForm.scss";
 
 const CheckoutForm: FC<{}> = () => {
 

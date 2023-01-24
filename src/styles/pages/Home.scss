@@ -1,0 +1,66 @@
+@use "../shared/vars";
+@use "../shared/utils";
+
+#header-main { 
+    width: 100%;
+
+    position: sticky;
+    top: 0;
+
+    padding: .5rem 1rem;
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+
+    font-size: 2.5rem;
+
+    background-color: vars.$color-primary;
+
+    z-index: vars.$layer-panel;;
+}
+
+.icon-header {
+    height: .7em;
+    @include utils.not-draggable;
+    @include utils.on-breakpoint(vars.$break-small) {
+        @include utils.button-behaviour;
+    }
+}
+
+#container-main {
+    width: fit-content;
+    
+    margin: 0 2rem;
+    padding: 2rem 0;
+    display: grid;
+    grid-gap: 2rem;
+    
+    // Responsiveness - Grid Spacing
+    @include utils.on-breakpoint(vars.$break-small) {
+        grid-template-columns: 1fr;
+    }
+    @include utils.on-breakpoint(vars.$break-medium) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @include utils.on-breakpoint(&) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+#footer-main { 
+    width: 100%;
+    height: 150px;
+
+    color: white;
+    background-color: vars.$color-primary;
+
+    z-index: vars.$layer-panel;
+
+    p {
+        &::selection {
+            color: black;
+            background-color: vars.$color-secondary;
+        }
+    }
+}

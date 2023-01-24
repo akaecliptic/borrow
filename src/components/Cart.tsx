@@ -3,7 +3,7 @@ import { MdShoppingCart } from "react-icons/md";
 import { shallow } from "zustand/shallow";
 import { Link } from "react-router-dom";
 import useCartStore from "hooks/useCartStore";
-import "styles/modules/Cart.scss";
+import "styles/components/Cart.scss";
 
 const Cart: FC<{}> = () => {
 

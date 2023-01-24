@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { MdCancel } from "react-icons/md";
-import "styles/modules/CheckoutBook.scss";
+import "styles/components/CheckoutBook.scss";
 
 const CheckoutBook: FC<{}> = () => {
     return (

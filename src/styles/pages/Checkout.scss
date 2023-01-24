@@ -1,0 +1,12 @@
+@use "../shared/vars";
+@use "../shared/utils";
+
+#header-checkout {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    position: absolute;
+
+    @include utils.on-breakpoint(&) {
+        margin-left: 3rem;
+    }
+}

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { VoidConsumer } from "types/functions";
-import "styles/modules/TextButton.scss";
+import "styles/components/TextButton.scss";
 
 export type PropTextButton = {
     text: string;
