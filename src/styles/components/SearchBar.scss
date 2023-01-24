@@ -1,17 +1,32 @@
+@use "../shared/vars";
 @use "../shared/utils";
 
 #container-search {
-    padding: 0 .5rem;
     display: flex;
     align-content: center;
 
     border-radius: .5rem;
     background-color: white;
 
-    #icon-search {
-        height: 1.8rem;
+    overflow: hidden;
+}
 
-        margin: auto 0;
+#icon-search {
+    height: 1em;
+
+    display: inherit;
+    align-items: center;
+
+    background-color: vars.$color-secondary;
+    
+    svg {
+        height: .7em;
+
+        color: white;
+    }
+    
+    &:hover {
+        background-color: darken(vars.$color-secondary, 10%);
     }
 
     @include utils.button-behaviour;
@@ -20,13 +35,9 @@
 #input-search {
     flex: content;
 
+    padding-left: 1em;
     border: none;
     outline: none;
 
     background-color: transparent;
-
-    &:disabled {
-        
-        @include utils.button-behaviour;
-    }
 }

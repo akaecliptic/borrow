@@ -30,9 +30,9 @@
 
 // Buttons
 @mixin not-draggable {
-    user-select: none;
-    -webkit-user-drag: none;
     -webkit-user-select: none;
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 @mixin button-behaviour {
