@@ -7,7 +7,7 @@ import SearchBar from "components/SearchBar";
 import { MdMenu } from "react-icons/md";
 import IBook from "shapes/Book";
 import { _data } from "_data/books";
-import openlib, { Edition } from "openlib";
+import openlib, { Books, StableBook } from "openlib";
 import "styles/pages/Home.scss";
 
 const Home: FC<{}> = () => {
@@ -15,12 +15,13 @@ const Home: FC<{}> = () => {
     const [ cards, setCards ] = useState<IBook[]>([]);
     const { width: screenWidth } = useScreenSize();
 
-    const makeBook = ( edition: Edition, id: string ): IBook => {
+    const makeBook = ( data: StableBook, id: string ): IBook => {
+        const authors: string[] = data.authors.map( author => author.name );
         const book: IBook = {
             id: id,
-            year: 2000,
-            title: edition.title!,
-            author: '',
+            year: data.publish_date,
+            title: data.title,
+            author: authors,
             description: '',
             tags: []
         };
@@ -32,7 +33,8 @@ const Home: FC<{}> = () => {
         const books: IBook[] = [];
         for (let i = 0; i < _data.editions.length; i++) {
             const id: string = _data.editions[i];
-            const data: Edition = await openlib.library({ endpoint: 'editions', parameter: id }) as Edition;
+            const collection: Books = await openlib.library({ endpoint: 'books', bibkeys: [[ 'olid', id ]] }) as Books;
+            const data: StableBook = collection[`olid:${id}`] as StableBook;
             books.push(makeBook(data, id));
         }
         
