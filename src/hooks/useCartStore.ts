@@ -6,7 +6,7 @@ export type CartState = {
     addBook: ( val: string ) => boolean;
     removeBook: ( val: string ) => void;
     clearCart: ( ) => void;
-}
+};
 
 const useCartStore = create<CartState>()((set, get) => ({
     books: [],

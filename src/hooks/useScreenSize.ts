@@ -14,7 +14,7 @@ const useScreenSize = () => {
     }, []);
 
     return size;
-}
+};
 
 // CONSIDER: Moving into a collective config file
 export const BreakPoint = {

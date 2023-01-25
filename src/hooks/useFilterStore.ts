@@ -7,7 +7,7 @@ export type FilterState = {
     addTag: ( val: string ) => void;
     removeTag: ( val: string ) => void;
     clearTags: ( ) => void;
-}
+};
 
 const useFilterStore = create<FilterState>()((set, get) => ({
     search: '',
