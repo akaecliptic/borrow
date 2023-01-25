@@ -19,9 +19,10 @@ const Home: FC<{}> = () => {
         const authors: string[] = data.authors.map( author => author.name );
         const book: IBook = {
             id: id,
+            olid: id,
             year: data.publish_date,
             title: data.title,
-            author: authors,
+            authors: authors,
             description: '',
             tags: []
         };

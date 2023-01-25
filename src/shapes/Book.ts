@@ -1,8 +1,9 @@
 export default interface IBook { 
     id: string;
-    year: string;
+    olid: string;
     title: string;
-    author: string[];
+    year: string;
+    authors: string[];
     description: string;
     tags: string[];
 };
