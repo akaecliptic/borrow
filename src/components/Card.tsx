@@ -17,7 +17,7 @@ const Card: FC<PropCard> = ({ book }) => {
     const [ showInfo, setShowInfo ] = useState<boolean>(false);
     const [ coverImage, setCoverImage ] = useState<string>('images/cover_default.jpg');
     const { width: screenWidth } = useScreenSize();
-    const [ addBook, removeBook, cart ] = useCartStore( state => [ state.addBook, state.removeBook, state.books ] );
+    const [ addBook, removeBook, carries ] = useCartStore( state => [ state.addBook, state.removeBook, state.carries ] );
 
     const renderTag = (): JSX.Element => {
         return (
@@ -25,7 +25,7 @@ const Card: FC<PropCard> = ({ book }) => {
                 <MdBookmark />
             </div>
         );
-    }
+    };
 
     const getClassName = (): string => {
         if ( screenWidth <= BreakPoint.small )
@@ -36,12 +36,12 @@ const Card: FC<PropCard> = ({ book }) => {
 
     const click: VoidConsumer = ( ) => {
         if ( selected ) { 
-            removeBook(book.id);
+            removeBook(book);
             setSelected(false);
             return;
         }
 
-        setSelected(addBook(book.id));
+        setSelected(addBook(book));
     };
 
     useEffect(() => {
@@ -50,8 +50,8 @@ const Card: FC<PropCard> = ({ book }) => {
     }, [ book.olid ]);
 
     useEffect(() => {
-        setSelected(cart.includes(book.id));
-    }, [ book.id, cart ]);
+        setSelected(carries(book));
+    }, [ book, carries ]);
 
     return (
         <div className='container-card' onClick={click}
