@@ -17,7 +17,7 @@ const Home: FC<{}> = () => {
     const loadBooks = async (): Promise<void> => {
         const books: IBook[] = await Accessor.instance.books;
         setCards(books);
-    }
+    };
 
 	useEffect(() => {
         loadBooks();
