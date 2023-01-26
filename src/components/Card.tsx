@@ -61,7 +61,7 @@ const Card: FC<PropCard> = ({ book }) => {
             />
             <div className={ getClassName() }>
                 <h3 className='info-title'>{ book.title }</h3>
-                <span className='info-author-date'>{ book.authors[0] } | { book.year }</span>
+                <span className='info-author-date'>{ book.authors.join(', ') } | { book.year }</span>
                 <p className='info-description'>{ book.description }</p>
             </div>
         </div>

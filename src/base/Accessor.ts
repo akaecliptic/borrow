@@ -19,7 +19,11 @@ export default class Accessor {
     get books(): Promise<IBook[]> {
         return Accessor._pocketbase.collection('books').getFullList().then( response => {
             const books: IBook[] = [];
-            response.forEach( book => books.push( book.export() as IBook ));
+            response.forEach( entry => {
+                const book: IBook = entry.export() as IBook;
+                book.authors = entry.export().authors.split(',');
+                books.push( book )
+            });
             return books;
         });
     }
