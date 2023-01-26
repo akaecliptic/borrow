@@ -8,6 +8,7 @@ import { MdMenu } from "react-icons/md";
 import IBook from "shapes/Book";
 import Accessor from "base/Accessor";
 import "styles/pages/Home.scss";
+import UserDropDown from "components/UserDropDown";
 
 const Home: FC<{}> = () => {
 
@@ -32,6 +33,7 @@ const Home: FC<{}> = () => {
                     <img className='icon-header' src='images/logo.svg' alt='Site Logo' /> 
                 }
                 <SearchBar />
+                <UserDropDown />
             </header>
             { screenWidth > BreakPoint.small && <Side /> }
             <main>
