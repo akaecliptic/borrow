@@ -17,7 +17,7 @@ const Card: FC<PropCard> = ({ book }) => {
     const [ showInfo, setShowInfo ] = useState<boolean>(false);
     const [ coverImage, setCoverImage ] = useState<string>('images/cover_default.jpg');
     const { width: screenWidth } = useScreenSize();
-    const [ addBook, removeBook ] = useCartStore( state => [ state.addBook, state.removeBook ] );
+    const [ addBook, removeBook, cart ] = useCartStore( state => [ state.addBook, state.removeBook, state.books ] );
 
     const renderTag = (): JSX.Element => {
         return (
@@ -48,6 +48,10 @@ const Card: FC<PropCard> = ({ book }) => {
         const url: string = coverURL({ value: book.olid, key: 'olid', size: 'L', info: false});
         setCoverImage(url);
     }, [ book.olid ]);
+
+    useEffect(() => {
+        setSelected(cart.includes(book.id));
+    }, [ book.id, cart ]);
 
     return (
         <div className='container-card' onClick={click}
