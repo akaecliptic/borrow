@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import useScreenSize, { BreakPoint } from "hooks/useScreenSize";
 import Card from "components/Card";
 import Cart from "components/Cart";
@@ -6,46 +6,18 @@ import Side from "components/Side";
 import SearchBar from "components/SearchBar";
 import { MdMenu } from "react-icons/md";
 import IBook from "shapes/Book";
-import { _data } from "_data/books";
-import openlib, { Books, StableBook } from "openlib";
+import books from "_data/books.json";
 import "styles/pages/Home.scss";
 
 const Home: FC<{}> = () => {
 
     const [ cards, setCards ] = useState<IBook[]>([]);
     const { width: screenWidth } = useScreenSize();
-
-    const makeBook = ( data: StableBook, id: string ): IBook => {
-        const authors: string[] = data.authors.map( author => author.name );
-        const book: IBook = {
-            id: id,
-            olid: id,
-            year: data.publish_date,
-            title: data.title,
-            authors: authors,
-            description: '',
-            tags: []
-        };
-
-        return book;
-    };
-
-    const query = useCallback( async () => {
-        const books: IBook[] = [];
-        for (let i = 0; i < _data.editions.length; i++) {
-            const id: string = _data.editions[i];
-            const collection: Books = await openlib.library({ endpoint: 'books', bibkeys: [[ 'olid', id ]] }) as Books;
-            const data: StableBook = collection[`olid:${id}`] as StableBook;
-            books.push(makeBook(data, id));
-        }
-        
-        setCards(books);
-    }, []);
     
 	useEffect(() => {
-        query();
+        setCards(books.data);
 		return () => { };
-	}, [ query ]);
+	}, [ ]);
 
     return (
         <>

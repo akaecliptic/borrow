@@ -60,9 +60,9 @@ const Card: FC<PropCard> = ({ book }) => {
                 alt={`Cover of book ${book.title}`}
             />
             <div className={ getClassName() }>
-                <h2 className='info-title'>{ book.title }</h2>
-                <span className='info-author-date'> { book.authors[0] } | { book.year } </span>
-                <p className='info-description'>This is a description</p>
+                <h3 className='info-title'>{ book.title }</h3>
+                <span className='info-author-date'>{ book.authors[0] } | { book.year }</span>
+                <p className='info-description'>{ book.description }</p>
             </div>
         </div>
     );
