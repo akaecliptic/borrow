@@ -35,3 +35,9 @@
         border: none;
     }
 }
+
+.container-checkout-books {
+    > *:first-child {
+        margin-bottom: 1rem;
+    }
+}
