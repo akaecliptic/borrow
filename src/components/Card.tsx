@@ -45,9 +45,9 @@ const Card: FC<PropCard> = ({ book }) => {
     };
 
     useEffect(() => {
-        const url: string = coverURL({ value: book.id, key: 'olid', size: 'L', info: false});
+        const url: string = coverURL({ value: book.olid, key: 'olid', size: 'L', info: false});
         setCoverImage(url);
-    }, [ book.id ]);
+    }, [ book.olid ]);
 
     return (
         <div className='container-card' onClick={click}

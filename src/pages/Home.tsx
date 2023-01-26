@@ -6,7 +6,7 @@ import Side from "components/Side";
 import SearchBar from "components/SearchBar";
 import { MdMenu } from "react-icons/md";
 import IBook from "shapes/Book";
-import books from "_data/books.json";
+import Accessor from "base/Accessor";
 import "styles/pages/Home.scss";
 
 const Home: FC<{}> = () => {
@@ -14,10 +14,14 @@ const Home: FC<{}> = () => {
     const [ cards, setCards ] = useState<IBook[]>([]);
     const { width: screenWidth } = useScreenSize();
     
+    const loadBooks = async (): Promise<void> => {
+        const books: IBook[] = await Accessor.instance.books;
+        setCards(books);
+    }
+
 	useEffect(() => {
-        setCards(books.data);
-		return () => { };
-	}, [ ]);
+        loadBooks();
+	}, []);
 
     return (
         <>

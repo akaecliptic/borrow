@@ -10,7 +10,7 @@ export default class Accessor {
         Accessor._pocketbase = new PocketBase(process.env.REACT_APP_POCKETBASE_URL);
     }
 
-    static instance(): Accessor {
+    static get instance(): Accessor {
         if ( !Accessor._instance ) Accessor._instance = new Accessor();
         
         return Accessor._instance;
