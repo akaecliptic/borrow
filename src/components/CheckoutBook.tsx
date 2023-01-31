@@ -1,3 +1,4 @@
+import useCartStore from "hooks/useCartStore";
 import { FC } from "react";
 import { MdCancel } from "react-icons/md";
 import IBook from "shapes/Book";
@@ -8,9 +9,12 @@ export type PropCheckoutBook = {
 };
 
 const CheckoutBook: FC<PropCheckoutBook> = ({ book }) => {
+
+    const [ removeBook ] = useCartStore( state => [ state.removeBook ] );
+
     return (
         <div className='container-checkout-book'>
-            <MdCancel className='cancel'/>
+            <MdCancel className='cancel' onClick={ () => removeBook(book) }/>
             <div className='content'> 
                 <h4>{ book.title }</h4>
                 <span className='info-author-date'>{ book.authors.join(', ') } | { book.year }</span>

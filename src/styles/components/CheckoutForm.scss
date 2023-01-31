@@ -2,15 +2,20 @@
 @use "../shared/utils";
 
 .container-checkout-form {
+    width: 550px;
+    height: 600px;
     @include utils.on-breakpoint(vars.$break-small) { 
         width: 100%;
+        max-width: 550px;
     }
     
     margin: auto;
-    padding: 7rem;
-    display: flex;
+    padding: 5rem;
     box-sizing: border-box;
+    
+    display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
 
     border-radius: .5rem;
@@ -28,7 +33,7 @@
 
     > input {
         padding: .5rem;
-        margin-bottom: .5rem;
+        margin-bottom: 1rem;
 
         border-radius: .5rem;
         outline: none;
@@ -37,7 +42,23 @@
 }
 
 .container-checkout-books {
-    > *:first-child {
+    > *:first-child:not(.checkout-no-books) {
         margin-bottom: 1rem;
+    }
+
+    .checkout-no-books {
+        width: 200px;
+
+        padding: 1rem .5rem;
+        display: flex;
+        justify-content: center;
+
+        span {
+            padding: 0 ;
+            color: lightgrey;
+            font-weight: bold;
+
+            @include utils.not-draggable;
+        }
     }
 }

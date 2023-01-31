@@ -14,5 +14,10 @@
         background-color: darken(vars.$color-secondary, 10%);
     }
 
+    &.text-disabled {
+        pointer-events: none;
+        filter: brightness(75%);
+    }
+
     @include utils.button-behaviour;
 }
