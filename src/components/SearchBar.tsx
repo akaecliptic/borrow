@@ -18,8 +18,8 @@ const SearchBar: FC<{}> = () => {
     };
 
     return (
-        <div id='container-search'>
-            <FiSearch id='icon-search' onClick={click}/>
+        <div id='container-search' onClick={click}>
+            <FiSearch id='icon-search'/>
             <input 
                 type='text' 
                 id='input-search' 
