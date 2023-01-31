@@ -1,25 +1,31 @@
 import { FC } from "react";
 import { FiSearch } from "react-icons/fi";
-import { OnChangeListener } from "types/functions";
+import { OnChangeListener, VoidConsumer } from "types/functions";
+import useFilterStore from "hooks/useFilterStore";
 import "styles/components/SearchBar.scss";
 
 const SearchBar: FC<{}> = () => {
 
+    const [ setSearch ] = useFilterStore( state => [state.setSearch] );
+
     const textChange: OnChangeListener = ( event ) => {
-        console.log(event.target.value);
+        setSearch(event.target.value);
+    };
+
+    const click: VoidConsumer = () => {
+        const input: HTMLInputElement = document.getElementById('input-search') as HTMLInputElement;
+        input.focus();
     };
 
     return (
         <div id='container-search'>
+            <FiSearch id='icon-search' onClick={click}/>
             <input 
                 type='text' 
                 id='input-search' 
                 name='input-search' 
                 placeholder='Search'
                 onChange={textChange}/>
-            <div id='icon-search'>
-                <FiSearch/>
-            </div>
         </div>
     );
 };

@@ -1,24 +1,31 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import useScreenSize, { BreakPoint } from "hooks/useScreenSize";
+import { MdMenu } from "react-icons/md";
 import Card from "components/Card";
 import Cart from "components/Cart";
 import Side from "components/Side";
 import SearchBar from "components/SearchBar";
-import { MdMenu } from "react-icons/md";
+import UserDropDown from "components/UserDropDown";
+import useFilterStore from "hooks/useFilterStore";
 import IBook from "shapes/Book";
 import Accessor from "base/Accessor";
 import "styles/pages/Home.scss";
-import UserDropDown from "components/UserDropDown";
 
 const Home: FC<{}> = () => {
 
     const [ cards, setCards ] = useState<IBook[]>([]);
+    const [ search ] = useFilterStore( state => [state.search] );
     const { width: screenWidth } = useScreenSize();
     
     const loadBooks = async (): Promise<void> => {
         const books: IBook[] = await Accessor.instance.books;
         setCards(books);
     };
+
+    const filteredCards = useMemo<IBook[]>( () => {
+        //* Need to update search functionality. This is fine for now.
+        return search.length === 0 ? cards : cards.filter( book => book.title.includes(search) );
+    }, [cards, search]);
 
 	useEffect(() => {
         loadBooks();
@@ -39,7 +46,7 @@ const Home: FC<{}> = () => {
             <main>
                 <div id='container-main'>
                     { 
-                        cards.map((val, ind) => {
+                        filteredCards.map((val, ind) => {
                             return <Card key={ind} book={val}/>
                         })
                     }
