@@ -4,11 +4,17 @@ import TextButton from "components/TextButton";
 import CheckoutBook from "components/CheckoutBook";
 import "styles/components/CheckoutForm.scss";
 import useCartStore from "hooks/useCartStore";
+import { VoidConsumer } from "types/functions";
 
 const CheckoutForm: FC<{}> = () => {
 
     const [ books ] = useCartStore( state => [ state.books ] );
     const date: string = dayjs().format('YYYY-MM-DD');
+
+    const submit: VoidConsumer = () => {
+        const returnDate: HTMLInputElement = document.getElementById('return-date') as HTMLInputElement;
+        console.log(`${books[0].title}, ${books[1].title} return by: ${returnDate.value}`);
+    };
 
     return (
         <div className='container-checkout-form'>
@@ -23,8 +29,8 @@ const CheckoutForm: FC<{}> = () => {
                 }
             </div>
             <label htmlFor='returnDate'>Return By:</label>
-            <input title='returnDate' type='date' min={date} placeholder={date}/>
-            <TextButton text='CONFIRM' click={ () => { console.log(' Hello World ')} } disable={books.length === 0}/>
+            <input id='return-date' title='returnDate' type='date' min={date} placeholder={date} disabled={books.length === 0}/>
+            <TextButton text='CONFIRM' click={ () => submit() } disable={books.length === 0}/>
         </div>
     );
 };
