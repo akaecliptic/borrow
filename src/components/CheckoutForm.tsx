@@ -17,14 +17,14 @@ const CheckoutForm: FC<{}> = () => {
     };
 
     return (
-        <div className='container-checkout-form'>
-            <div className='form-user'>
+        <div id='container-checkout-form'>
+            <div id='form-user'>
                 <h3>Username</h3>
             </div>
-            <div className='container-checkout-books'>
+            <div id='container-checkout-books'>
                 {   
                     books.length === 0 ? 
-                    <div className='checkout-no-books'><span>No books in cart</span></div>    :
+                    <div id='checkout-no-books'><span>No books in cart</span><span>Select books from home page to continue</span></div>    :
                     books.map( book => (<CheckoutBook key={book.id} book={book}/>))
                 }
             </div>

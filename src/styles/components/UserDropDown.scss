@@ -27,11 +27,14 @@
 
     @include utils.button-behaviour;
 
-    > p {
+    > span {
+        font-size: .9em;
+        text-transform: uppercase;
+        
         padding: .1rem .5rem;
     }
 
-    > p:hover {
+    > span:hover {
         background-color: darken(white, 5%);
     }
 }

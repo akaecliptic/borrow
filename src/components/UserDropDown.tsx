@@ -1,8 +1,10 @@
 import { FC, useEffect, useRef } from "react";
-import "styles/components/UserDropDown.scss"
+import { useNavigate } from "react-router-dom";
 import { VoidConsumer } from "types/functions";
+import "styles/components/UserDropDown.scss"
 
 const UserDropDown: FC<{}> = () => {
+    const navigate = useNavigate();
 
     const refDropdown = useRef<HTMLDivElement>(null);
 
@@ -31,7 +33,7 @@ const UserDropDown: FC<{}> = () => {
                 alt={`User ===`}
             />
             <div ref={refDropdown} id='user-dropdown-content' className='hide-dropdown'>
-                <p>Login</p>
+                <span onClick={ () => navigate('/login') }>LOGIN</span>
             </div>
         </div>
     );

@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import TextButton from "components/TextButton";
-import CheckoutForm from "components/CheckoutForm";
+import LoginForm from "components/LoginForm";
 
-const Checkout: FC<{}> = () => {
+const Login: FC<{}> = () => {
     const navigate = useNavigate();
 
     return (
@@ -12,10 +12,10 @@ const Checkout: FC<{}> = () => {
                 <TextButton text='<- BACK' click={ () => { navigate('/') }}/>
             </header>
             <main>
-                <CheckoutForm />
+                <LoginForm />
             </main>
         </>
     );
 };
 
-export default Checkout;
+export default Login;

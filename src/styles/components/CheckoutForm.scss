@@ -1,27 +1,10 @@
 @use "../shared/vars";
 @use "../shared/utils";
 
-.container-checkout-form {
-    width: 550px;
-    height: 600px;
-    @include utils.on-breakpoint(vars.$break-small) { 
-        width: 100%;
-        max-width: 550px;
-    }
+#container-checkout-form {
+    @include utils.form;
     
-    margin: auto;
-    padding: 5rem;
-    box-sizing: border-box;
-    
-    display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
-
-    border-radius: .5rem;
-
-    color: white;
-    background-color: vars.$color-primary;
 
     > div, > span {
         margin: .5rem 0;
@@ -41,21 +24,23 @@
     }
 }
 
-.container-checkout-books {
-    > *:first-child:not(.checkout-no-books) {
+#container-checkout-books {
+    > *:first-child:not(#checkout-no-books) {
         margin-bottom: 1rem;
     }
 
-    .checkout-no-books {
+    #checkout-no-books {
         width: 200px;
 
         padding: 1rem .5rem;
         display: flex;
+        flex-direction: column;
         justify-content: center;
 
         span {
             padding: 0 ;
             color: lightgrey;
+            text-align: center;
             font-weight: bold;
 
             @include utils.not-draggable;
