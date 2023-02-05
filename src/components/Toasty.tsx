@@ -48,7 +48,7 @@ const Toasty: FC<PropToasty> = ({ state, actions }) => {
     return (
         <div className={`toasty-${state.channel} ${state.length}`}>
             {icon()}
-            <h4>{state.message}</h4>
+            <h5>{state.message}</h5>
             <MdCancel className='cancel' id='toasty-cancel' />
         </div>
     );

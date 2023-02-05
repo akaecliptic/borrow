@@ -42,18 +42,20 @@ $color-error: #920000;
     box-sizing: border-box;
     grid-template-columns: 1fr 5fr 1fr;
     place-items: center;
-    position: absolute;
+    position: fixed;
     top: 1rem;
 
+    color: white;
     border-radius: 5px;
+    z-index: vars.$layer-toasty;
 
-    h4 {
+    h5 {
         text-align: center;
     }
 
     svg:first-child {
-        width: 1.5em;
-        height: 1.5em;
+        width: 1.5rem;
+        height: 1.5rem;
     }
 
     svg:last-child {
