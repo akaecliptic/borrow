@@ -1,0 +1,87 @@
+@use "../shared/vars";
+@use "../shared/utils";
+
+$color-info: #00AA33;
+$color-warn: #CC7711;
+$color-error: #920000;
+
+@mixin anim($temporary: true) {
+    @if $temporary {
+        animation: movein .25s ease-in, moveout .25s ease-out 3s forwards;
+    } @else {
+        animation: movein .25s ease-in;
+    }
+}
+
+@keyframes movein {
+    from {
+        top: -5rem;
+    }
+    to {
+        top: 1rem;
+    }
+}
+
+@keyframes moveout {
+    from {
+        top: 1rem;
+        opacity: 1;
+    }
+    to {
+        top: -5rem;
+        opacity: 0;
+    }
+}
+
+@mixin toasty {
+    max-width: 300px;
+
+    padding: 1rem .5rem;
+
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: 1fr 5fr 1fr;
+    place-items: center;
+    position: absolute;
+    top: 1rem;
+
+    border-radius: 5px;
+
+    h4 {
+        text-align: center;
+    }
+
+    svg:first-child {
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    svg:last-child {
+        color: lightgrey;
+        @include utils.button-behaviour;
+    }
+}
+
+div[class^='toasty-'] {
+    @include toasty;
+
+    &.perm {
+        @include anim(false);
+    }
+
+    &.temp {
+        @include anim(true);
+    }
+}
+
+.toasty-error {
+    background-color: $color-error;
+}
+
+.toasty-warn {
+    background-color: $color-warn;
+}
+
+.toasty-info {
+    background-color: $color-info;
+}

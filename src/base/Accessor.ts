@@ -1,5 +1,5 @@
-import PocketBase from 'pocketbase';
-import IBook from 'shapes/Book';
+import PocketBase, { RecordAuthResponse } from "pocketbase";
+import IBook from "shapes/Book";
 
 export default class Accessor {
 
@@ -26,5 +26,16 @@ export default class Accessor {
             });
             return books;
         });
+    }
+
+    get isValid(): boolean {
+        return Accessor._pocketbase.authStore.isValid;
+    }
+
+    login( email: string, password: string ): Promise<RecordAuthResponse> {
+        return Accessor._pocketbase.collection('users').authWithPassword(
+            email,
+            password,
+        );
     }
 }
