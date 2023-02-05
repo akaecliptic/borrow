@@ -42,7 +42,6 @@ const Home: FC<{}> = () => {
                 <SearchBar />
                 <UserDropDown />
             </header>
-            { screenWidth > BreakPoint.small && <Side /> }
             <main>
                 <div id='container-main'>
                     { 

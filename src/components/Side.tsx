@@ -2,6 +2,8 @@ import { FC } from "react";
 import "styles/components/Side.scss";
 import { VoidConsumer } from "types/functions";
 
+//! REMOVED: Temporarily removing for lack of functionality.
+//! will re-implement later 
 const Side: FC<{}> = () => {
 
     const toggleSide: VoidConsumer = ( ) => {
