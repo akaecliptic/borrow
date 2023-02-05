@@ -90,7 +90,7 @@
 @mixin form {
     width: 550px;
     height: 600px;
-    
+
     @include on-breakpoint(vars.$break-small) { 
         width: 100%;
         max-width: 550px;
@@ -108,4 +108,19 @@
 
     color: white;
     background-color: vars.$color-primary;
+}
+
+@mixin auth-form {
+    @include form;
+
+    justify-content: center;
+
+    > input {
+        padding: .5rem;
+        margin-bottom: 2rem;
+
+        border-radius: .5rem;
+        outline: none;
+        border: none;
+    }
 }

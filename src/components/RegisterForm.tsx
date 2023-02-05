@@ -6,40 +6,42 @@ import Toasty from "components/Toasty";
 import useToasty from "hooks/useToasty";
 import { ClientResponseError } from "pocketbase";
 import { useNavigate } from "react-router-dom";
-import "styles/components/LoginForm.scss";
+import "styles/components/RegisterForm.scss";
 
-const LoginForm: FC<{}> = () => {
+const RegisterForm: FC<{}> = () => {
 
     const navigate = useNavigate();
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [passwordConfirm, setPasswordConfirm] = useState<string>('');
     const [toasty, actions] = useToasty();
 
     const submit: VoidConsumer = async () => {
         try {
-            await Accessor.instance.login(email, password);
-            actions.update('Login successful. Redirecting...', 'info', 'temp', () => navigate('/') );
+            await Accessor.instance.register(email, password, passwordConfirm);
+            actions.update('Registration successful. Redirecting...', 'info', 'temp', () => navigate('/') );
         } catch ( error ) {
-            // TODO: Check User exists
-            actions.update(`Login error: '${(error as ClientResponseError).data.message}'`, 'error', 'temp');
+            actions.update(`Registration error: '${(error as ClientResponseError).data.message}'`, 'error', 'temp');
         }
         actions.syn();
     };
 
     const valid = useMemo<boolean>( () => {
-        return (email.match(/\w+@\w+\.com/i) !== null) && password.length >= 8;
-    }, [ email, password ]);
+        return (email.match(/\w+@\w+\.com/i) !== null) && password.length >= 8 && password === passwordConfirm;
+    }, [ email, password, passwordConfirm ]);
 
     return (
-        <div id='container-login-form'>
+        <div id='container-register-form'>
             <Toasty state={toasty} actions={actions} />
             <label htmlFor='email'>Email</label>
             <input title='email' type='email' onChange={ e => setEmail(e.currentTarget.value) }/>
             <label htmlFor='password'>Password</label>
             <input title='password' type='password' onChange={ e => setPassword(e.currentTarget.value) }/>
-            <TextButton text='Login' click={() => submit() } disable={!valid}/>
+            <label htmlFor='password-confirm'>Confirm Password</label>
+            <input title='password-confirm' type='password' onChange={ e => setPasswordConfirm(e.currentTarget.value) }/>
+            <TextButton text='Register' click={() => submit() } disable={!valid}/>
         </div>
     );
 };
 
-export default LoginForm;
+export default RegisterForm;

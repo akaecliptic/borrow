@@ -38,4 +38,17 @@ export default class Accessor {
             password,
         );
     }
+
+    register( email: string, password: string, passwordConfirm: string ): Promise<RecordAuthResponse> {
+        const user = {
+            username: email.split('@')[0],
+            email: email,
+            emailVisibility: true,
+            password: password,
+            passwordConfirm: passwordConfirm,
+            avatar: (Math.floor(Math.random() * 7) + 1).toString()
+        };
+        
+        return Accessor._pocketbase.collection('users').create(user);
+    }
 }
