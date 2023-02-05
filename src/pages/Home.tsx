@@ -3,7 +3,6 @@ import useScreenSize, { BreakPoint } from "hooks/useScreenSize";
 import { MdMenu } from "react-icons/md";
 import Card from "components/Card";
 import Cart from "components/Cart";
-import Side from "components/Side";
 import SearchBar from "components/SearchBar";
 import UserDropDown from "components/UserDropDown";
 import useFilterStore from "hooks/useFilterStore";
