@@ -5,7 +5,7 @@ import useCartStore from "hooks/useCartStore";
 import ConditionalLink from "components/util/ConditionalLink";
 import { VoidConsumer } from "types/functions";
 import useToasty from "hooks/useToasty";
-import Toasty from "components/Toasty";
+import Toasty from "components/auxil/Toasty";
 import "styles/components/Cart.scss";
 
 const Cart: FC<{}> = () => {

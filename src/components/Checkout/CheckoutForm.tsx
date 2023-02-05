@@ -1,10 +1,10 @@
 import { FC } from "react";
 import dayjs from "dayjs";
-import TextButton from "components/TextButton";
-import CheckoutBook from "components/CheckoutBook";
-import "styles/components/CheckoutForm.scss";
+import TextButton from "components/auxil/TextButton";
+import CheckoutBook from "components/Checkout/CheckoutBook";
 import useCartStore from "hooks/useCartStore";
 import { VoidConsumer } from "types/functions";
+import "styles/components/CheckoutForm.scss";
 
 const CheckoutForm: FC<{}> = () => {
 

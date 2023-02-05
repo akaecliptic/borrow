@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import TextButton from "components/TextButton";
-import LoginForm from "components/LoginForm";
-import RegisterForm from "components/RegisterForm";
+import TextButton from "components/auxil/TextButton";
+import LoginForm from "components/Login/LoginForm";
+import RegisterForm from "components/Login/RegisterForm";
 
 const Login: FC<{}> = () => {
     const navigate = useNavigate();

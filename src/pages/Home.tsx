@@ -1,10 +1,10 @@
 import { FC, useEffect, useMemo, useState } from "react";
 import useScreenSize, { BreakPoint } from "hooks/useScreenSize";
 import { MdMenu } from "react-icons/md";
-import Card from "components/Card";
-import Cart from "components/Cart";
-import SearchBar from "components/SearchBar";
-import UserDropDown from "components/UserDropDown";
+import Card from "components/Home/Card";
+import Cart from "components/Home/Cart";
+import SearchBar from "components/Home/SearchBar";
+import UserDropDown from "components/Home/UserDropDown";
 import useFilterStore from "hooks/useFilterStore";
 import IBook from "shapes/Book";
 import Accessor from "base/Accessor";

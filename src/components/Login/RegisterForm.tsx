@@ -1,8 +1,8 @@
 import { FC, useMemo, useState } from "react";
 import Accessor from "base/Accessor";
 import { VoidConsumer } from "types/functions";
-import TextButton from "components/TextButton";
-import Toasty from "components/Toasty";
+import TextButton from "components/auxil/TextButton";
+import Toasty from "components/auxil/Toasty";
 import useToasty from "hooks/useToasty";
 import { ClientResponseError } from "pocketbase";
 import { useNavigate } from "react-router-dom";
