@@ -16,7 +16,7 @@ const Toasty: FC<PropToasty> = ({ state, actions }) => {
     useEffect(() => {
         if (!state.show) return;
 
-        const duration: number = (state.length === 'perm') ? 300000 : 3500;
+        const duration: number = (state.length === 'perm') ? 300000 : 2500;
         const cancel: HTMLElement = document.getElementById('toasty-cancel') as HTMLElement;
 
         const dismiss: VoidConsumer = () => {

@@ -7,7 +7,7 @@ $color-error: #920000;
 
 @mixin anim($temporary: true) {
     @if $temporary {
-        animation: movein .25s ease-in, moveout .25s ease-out 3s forwards;
+        animation: movein .25s ease-in, moveout .25s ease-out 2s forwards;
     } @else {
         animation: movein .25s ease-in;
     }

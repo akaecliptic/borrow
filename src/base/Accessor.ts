@@ -51,4 +51,8 @@ export default class Accessor {
         
         return Accessor._pocketbase.collection('users').create(user);
     }
+
+    logout(): void {
+        Accessor._pocketbase.authStore.clear();
+    }
 }
