@@ -35,7 +35,7 @@ const UserDropDown: FC<{}> = () => {
                     !login ? 
                     <span onClick={ () => navigate('/login') }><MdLogin /> Login</span> : 
                     <>
-                        <span onClick={ () => console.log('click') }><MdAccountCircle /> Profile</span>
+                        <span onClick={ () => navigate(`/user/${user?.id}`) }><MdAccountCircle /> Profile</span>
                         <span onClick={ event => logout(event) }><MdLogout /> Logout</span>
                     </>
                 }

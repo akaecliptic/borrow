@@ -6,7 +6,6 @@ import Toasty from "components/auxil/Toasty";
 import useToasty from "hooks/useToasty";
 import { ClientResponseError } from "pocketbase";
 import { useNavigate } from "react-router-dom";
-import "styles/components/LoginForm.scss";
 
 const LoginForm: FC<{}> = () => {
 
@@ -31,7 +30,7 @@ const LoginForm: FC<{}> = () => {
     }, [ email, password ]);
 
     return (
-        <div id='container-login-form'>
+        <div className='auth-form'>
             <Toasty state={toasty} actions={actions} />
             <label htmlFor='email'>Email</label>
             <input title='email' type='email' onChange={ e => setEmail(e.currentTarget.value) }/>

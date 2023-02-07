@@ -6,7 +6,6 @@ import Toasty from "components/auxil/Toasty";
 import useToasty from "hooks/useToasty";
 import { ClientResponseError } from "pocketbase";
 import { useNavigate } from "react-router-dom";
-import "styles/components/RegisterForm.scss";
 
 const RegisterForm: FC<{}> = () => {
 
@@ -31,7 +30,7 @@ const RegisterForm: FC<{}> = () => {
     }, [ email, password, passwordConfirm ]);
 
     return (
-        <div id='container-register-form'>
+        <div className='auth-form'>
             <Toasty state={toasty} actions={actions} />
             <label htmlFor='email'>Email</label>
             <input title='email' type='email' onChange={ e => setEmail(e.currentTarget.value) }/>
