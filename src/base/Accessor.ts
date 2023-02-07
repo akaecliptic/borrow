@@ -1,5 +1,6 @@
 import PocketBase, { RecordAuthResponse } from "pocketbase";
 import IBook from "shapes/Book";
+import IUser from "shapes/User";
 
 export default class Accessor {
 
@@ -32,6 +33,11 @@ export default class Accessor {
         return Accessor._pocketbase.authStore.isValid;
     }
 
+    get user(): IUser {
+        //! WATCH: This looks wrong?
+        return (Accessor._pocketbase.authStore.model as IUser);
+    }
+
     login( email: string, password: string ): Promise<RecordAuthResponse> {
         return Accessor._pocketbase.collection('users').authWithPassword(
             email,
@@ -40,7 +46,7 @@ export default class Accessor {
     }
 
     register( email: string, password: string, passwordConfirm: string ): Promise<RecordAuthResponse> {
-        const user = {
+        const user: IUser = {
             username: email.split('@')[0],
             email: email,
             emailVisibility: true,

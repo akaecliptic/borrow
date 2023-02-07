@@ -1,14 +1,16 @@
-import { FC, useState } from "react";
+import { FC, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { OnClickListener, VoidConsumer } from "types/functions";
 import Accessor from "base/Accessor";
 import { MdAccountCircle, MdLogin, MdLogout } from "react-icons/md";
+import IUser from "shapes/User";
 import "styles/components/UserDropDown.scss"
 
 const UserDropDown: FC<{}> = () => {
     
     const navigate = useNavigate();
-    const [login, setLogin] = useState(Accessor.instance.isValid)
+    const [login, setLogin] = useState(Accessor.instance.isValid);
+    const user: IUser | null = useMemo(() => ( login ) ? Accessor.instance.user : null, [login]);
 
     const logout: OnClickListener = ( event: React.MouseEvent ) => {
         toggle();
@@ -26,7 +28,7 @@ const UserDropDown: FC<{}> = () => {
         <div id='container-user-dropdown' onClick={ () => toggle() }>
             <img
                 src={'images/user_default.jpg'}
-                alt={`User ===`}
+                alt={user ? user.username : 'no user'}
             />
             <div id='user-dropdown-content' className='hide-dropdown'>
                 {
