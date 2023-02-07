@@ -23,7 +23,9 @@ const Home: FC<{}> = () => {
 
     const filteredCards = useMemo<IBook[]>( () => {
         //* Need to update search functionality. This is fine for now.
-        return search.length === 0 ? cards : cards.filter( book => book.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) );
+        return search.length === 0 ? 
+        cards.filter( book => book.borrowed === '' ) : 
+        cards.filter( book => book.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) && book.borrowed === '' );
     }, [cards, search]);
 
 	useEffect(() => {

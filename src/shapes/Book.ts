@@ -6,4 +6,5 @@ export default interface IBook {
     authors: string[];
     description: string;
     tags: string[];
+    borrowed: string;
 };

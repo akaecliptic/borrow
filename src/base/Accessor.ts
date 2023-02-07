@@ -1,4 +1,5 @@
-import PocketBase, { RecordAuthResponse } from "pocketbase";
+import PocketBase, { Admin, Record, RecordAuthResponse } from "pocketbase";
+import IRecord from "shapes/BorrowRecord";
 import IBook from "shapes/Book";
 import IUser from "shapes/User";
 
@@ -23,7 +24,7 @@ export default class Accessor {
             response.forEach( entry => {
                 const book: IBook = entry.export() as IBook;
                 book.authors = entry.export().authors.split(',');
-                books.push( book )
+                books.push( book );
             });
             return books;
         });
@@ -34,8 +35,8 @@ export default class Accessor {
     }
 
     get user(): IUser {
-        //! WATCH: This looks wrong?
-        return (Accessor._pocketbase.authStore.model as IUser);
+        const model: Record | Admin | null = Accessor._pocketbase.authStore.model;
+        return model ? model.export() as IUser : {};
     }
 
     login( email: string, password: string ): Promise<RecordAuthResponse> {
@@ -60,5 +61,25 @@ export default class Accessor {
 
     logout(): void {
         Accessor._pocketbase.authStore.clear();
+    }
+
+    async borrow( book: string, borrowed: string, returned: string ): Promise<Record> {
+        const user: IUser = Accessor.instance.user;
+
+        if( !user ) throw Error('User must login to borrow books');
+
+        const record: IRecord = {
+            user_id: user.id!,
+            book_id: book,
+            borrowed,
+            returned
+        };
+
+        const update = {
+            borrowed: user.id!
+        };
+        
+        await Accessor._pocketbase.collection('records').create(record);
+        return Accessor._pocketbase.collection('books').update(book, update);
     }
 }
