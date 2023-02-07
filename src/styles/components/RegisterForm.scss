@@ -1,6 +1,0 @@
-@use "../shared/vars";
-@use "../shared/utils";
-
-#container-register-form {
-    @include utils.auth-form;
-}

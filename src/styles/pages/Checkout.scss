@@ -1,9 +1,7 @@
 @use "../shared/vars";
 @use "../shared/utils";
 
-#container-checkout-form {
-    @include utils.form;
-    
+.form#container-checkout-form {
     justify-content: space-evenly;
 
     > div, > span {

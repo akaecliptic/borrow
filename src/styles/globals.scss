@@ -1,7 +1,8 @@
 @use "shared/vars";
 @use "shared/utils";
 
-// Globals
+// ROOT ELEMENTS
+
 * {
     margin: 0;
     padding: 0;
@@ -14,14 +15,16 @@ html {
 body {
     width: 100%;
     height: 100%;
-
+    
     background-color: vars.$color-background;
-
+    
     > #root {
         width: 100%;
         height: 100%;
     }
 }
+
+// HTML SEMANTIC ELEMENTS
 
 main {
     min-height: 100%;
@@ -42,7 +45,18 @@ header.header-back{
     position: absolute; //* CONSIDER: Don't know which I prefer. Keeping for now
 }
 
-// Text
+// FORMS
+
+div.form {
+    @include utils.form;
+}
+
+div.auth-form {
+    @include utils.auth-form;
+}
+
+// TEXT
+
 p, div {
     @include utils.text-main;
     @include utils.text-main-highlight;
