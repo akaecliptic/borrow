@@ -20,14 +20,14 @@ const LoginForm: FC<{}> = () => {
             actions.update('Login successful. Redirecting...', 'info', 'temp', () => navigate('/') );
         } catch ( error ) {
             // TODO: Check User exists
-            actions.update(`Login error: '${(error as ClientResponseError).data.message}'`, 'error', 'temp');
+            actions.update(`Login error: '${(error as ClientResponseError).data.message}'`, 'error', 'perm');
         }
         actions.syn();
     };
 
     const valid = useMemo<boolean>( () => {
-        return (email.match(/\w+@\w+\.com/i) !== null) && password.length >= 8;
-    }, [ email, password ]);
+        return (email.match(/\w+@\w+\.com/i) !== null) && password.length >= 8 && !toasty.show;
+    }, [ email, password, toasty.show ]);
 
     return (
         <div className='auth-form'>

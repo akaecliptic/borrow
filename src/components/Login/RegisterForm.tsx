@@ -20,14 +20,14 @@ const RegisterForm: FC<{}> = () => {
             await Accessor.instance.register(email, password, passwordConfirm);
             actions.update('Registration successful. Redirecting...', 'info', 'temp', () => navigate('/') );
         } catch ( error ) {
-            actions.update(`Registration error: '${(error as ClientResponseError).data.message}'`, 'error', 'temp');
+            actions.update(`Registration error: '${(error as ClientResponseError).data.message}'`, 'error', 'perm');
         }
         actions.syn();
     };
 
     const valid = useMemo<boolean>( () => {
-        return (email.match(/\w+@\w+\.com/i) !== null) && password.length >= 8 && password === passwordConfirm;
-    }, [ email, password, passwordConfirm ]);
+        return (email.match(/\w+@\w+\.com/i) !== null) && password.length >= 8 && password === passwordConfirm && !toasty.show;
+    }, [ email, password, passwordConfirm, toasty.show ]);
 
     return (
         <div className='auth-form'>
