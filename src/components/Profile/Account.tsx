@@ -10,7 +10,7 @@ const Account: FC<{}> = () => {
                 <InputChange value={Accessor.instance.user.username!} field='username' onChange={ e => console.log(e.currentTarget.value) }/>
             </div>
             <div>
-                <PasswordChange onValid={ password => console.log(password) }/>
+                <PasswordChange onValidate={ password => console.log(password) }/>
             </div>
         </>
     );

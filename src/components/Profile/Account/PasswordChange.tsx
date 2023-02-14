@@ -3,21 +3,21 @@ import { MdEdit } from "react-icons/md";
 import "styles/components/PasswordChange.scss";
 
 export type PropPasswordChange = {
-    onValid: ( pass: string ) => void;
+    onValidate: ( payload: { isValid: boolean, data: string | null } ) => void;
 };
 
-const PasswordChange: FC<PropPasswordChange> = ({ onValid }) => {
+const PasswordChange: FC<PropPasswordChange> = ({ onValidate }) => {
     
     const [editMode, setEditMode] = useState<boolean>(false);
     const [password, setPassword] = useState<string>('');
     const [confirm, setConfirm] = useState<string>('');
 
     useEffect(() => {
-        if ( password.length < 8 || password !== confirm ) return;
+        const valid = password.length < 8 || password !== confirm;
 
-        onValid(password);
+        onValidate({ isValid: valid, data: valid ? password : null });
     
-    }, [password, confirm, onValid]);
+    }, [password, confirm, onValidate]);
 
     return (
         <div className='password-change'>
