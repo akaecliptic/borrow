@@ -10,9 +10,9 @@ export type PropTextButton = {
 
 const TextButton: FC<PropTextButton> = ({ text, click, disable = false }) => {
     return (
-        <div className={`container-text-button${ disable ? ' text-disabled' : '' }`} onClick={click}>
-            <h4>{ text }</h4>
-        </div>
+        <button className={`container-text-button${ disable ? ' text-disabled' : '' }`} onClick={click}>
+            <h3>{ text }</h3>
+        </button>
     );
 };
 
