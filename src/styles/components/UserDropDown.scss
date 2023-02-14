@@ -35,14 +35,24 @@
         display: none;
     }
 
-    > span {
+    > span, > a {
+        width: 100%;
         padding: .1rem .5rem;
+        box-sizing: border-box;
         display: flex;
+        justify-content: center;
         align-items: center;
         font-size: .9em;
+        
+        &:hover {
+            background-color: darken(white, 5%);
+        }
     }
 
-    > span:hover {
-        background-color: darken(white, 5%);
+    > a {
+        color: black;
+        text-decoration: none;
+
+        @include utils.text-tag;
     }
 }

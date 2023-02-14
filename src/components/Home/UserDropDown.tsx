@@ -1,5 +1,5 @@
 import { FC, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { OnClickListener, VoidConsumer } from "types/functions";
 import Accessor from "base/Accessor";
 import { MdAccountCircle, MdLogin, MdLogout } from "react-icons/md";
@@ -8,7 +8,6 @@ import "styles/components/UserDropDown.scss"
 
 const UserDropDown: FC<{}> = () => {
     
-    const navigate = useNavigate();
     const [login, setLogin] = useState(Accessor.instance.isValid);
     const user: IUser | null = useMemo(() => ( login ) ? Accessor.instance.user : null, [login]);
 
@@ -33,9 +32,9 @@ const UserDropDown: FC<{}> = () => {
             <div id='user-dropdown-content' className='hide-dropdown'>
                 {
                     !login ? 
-                    <span onClick={ () => navigate('/login') }><MdLogin /> Login</span> : 
+                    <Link to='/login'><MdLogin /> Login</Link> : 
                     <>
-                        <span onClick={ () => navigate(`/user/${user?.id}`) }><MdAccountCircle /> Profile</span>
+                        <Link to={`/user/${user?.id}`}><MdAccountCircle /> Profile</Link>
                         <span onClick={ event => logout(event) }><MdLogout /> Logout</span>
                     </>
                 }
