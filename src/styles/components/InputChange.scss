@@ -1,0 +1,56 @@
+@use "../shared/vars";
+@use "../shared/utils";
+
+.input-change {
+    display: grid;
+    grid-template: 
+        "a a" auto
+        "b c" auto / auto auto;
+    row-gap: .5rem;
+
+    > label {
+        grid-area: a;
+
+        text-align: center;
+    }
+
+    > input {
+        grid-area: b;
+
+        padding: .5rem;
+
+        border-radius: .5rem 0 0 .5rem;
+        outline: none;
+        border: none;
+
+        &:disabled {
+            background: darken(white, 10%);
+        }
+    }
+
+    > svg {
+        grid-area: c;
+
+        width: 2rem;
+        height: 2rem;
+
+        border-radius: 0 .5rem .5rem 0;
+        background-color: darkgrey;
+        
+        @include utils.button-behaviour;
+
+        &:hover {
+            background-color: grey;
+        }
+
+        &.active {
+            background-color: vars.$color-secondary;
+        }
+
+        &.active:hover {
+            background-color: darken(vars.$color-secondary, 10%);
+        }
+
+    }
+}
+
