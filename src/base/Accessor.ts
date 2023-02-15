@@ -39,6 +39,23 @@ export default class Accessor {
         return model ? model.export() as IUser : {};
     }
 
+    get borrowed(): Promise<[IRecord, IBook][]> {
+        return Accessor._pocketbase.collection('records').getList(1, 10, {
+            filter: 'status != "returned"',
+            expand: 'book_id'
+        }).then( response => {
+            const items: [IRecord, IBook][] = [];
+            response.items.forEach( item => {
+                const record: IRecord = item.export() as IRecord;
+                const temp: Record = (item.expand as Record).book_id;
+                const book: IBook = temp.export() as IBook;
+                book.authors = temp.export().authors.split(',');
+                items.push( [record, book] );
+            });
+            return items;
+        });
+    }
+
     login( email: string, password: string ): Promise<RecordAuthResponse> {
         return Accessor._pocketbase.collection('users').authWithPassword(
             email,
