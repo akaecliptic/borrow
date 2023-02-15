@@ -3,4 +3,5 @@ export default interface IRecord {
     user_id: string;
     borrowed: string; // DateTimes
     returned: string; // DateTimes
+    status: 'ordered' | 'borrowed' | 'requested' | 'returned';
 };

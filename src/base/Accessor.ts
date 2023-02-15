@@ -72,7 +72,8 @@ export default class Accessor {
             user_id: user.id!,
             book_id: book,
             borrowed,
-            returned
+            returned,
+            status: 'ordered'
         };
 
         const update = {
