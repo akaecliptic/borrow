@@ -13,7 +13,7 @@ const PasswordChange: FC<PropPasswordChange> = ({ onValidate }) => {
     const [confirm, setConfirm] = useState<string>('');
 
     useEffect(() => {
-        const valid = password.length < 8 || password !== confirm;
+        const valid = password.length > 8 && password === confirm;
 
         onValidate({ isValid: valid, data: valid ? password : null });
     
