@@ -15,6 +15,23 @@
     }
 }
 
+.container-borrowed-book > .return {
+    width: 2rem;
+    height: 2rem;
+    
+    position: absolute;
+    align-self: center;
+    transform: translateX(-125%);
+
+    color: white;
+
+    @include utils.button-behaviour;
+
+    :hover {
+        color: lightgrey;
+    }
+}
+
 .container-borrowed-book > .content {
     width: 220px;
 

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import dayjs from "dayjs";
 import IBook from "shapes/Book";
+import { MdAssignmentReturn } from "react-icons/md";
 import "styles/components/BorrowedBook.scss";
 
 export type PropBorrowedBook = {
@@ -11,6 +12,7 @@ export type PropBorrowedBook = {
 const BorrowedBook: FC<PropBorrowedBook> = ({ book }) => {
     return (
         <div className='container-borrowed-book'>
+            <MdAssignmentReturn className='return'/>
             <div className='content'> 
                 <h4>{ book.title }</h4>
                 <span className='info-author-date'>{ book.authors.join(', ') } | { book.year }</span>
